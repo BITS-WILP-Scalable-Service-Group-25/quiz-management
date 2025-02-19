@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quiz-management-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quiz-management
+  template:
+    metadata:
+      labels:
+        app: quiz-management
+    spec:
+      containers:
+        - name: quiz-management
+          image: quiz-management:v1.0.0
+          ports:
+            - containerPort: 5001
+          env:
+            - name: PORT
+              value: "5001"
+            - name: LOG_PATH
+              value: "/quiz-management/logs"
