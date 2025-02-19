@@ -9,7 +9,7 @@ const server = app.listen(PORT, () => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Hello, this is a test message!');
+  res.send(`Hello, this is a test message on ${PORT}`);
   logger.info(`Hello, this is a test message on ${PORT}`);
 });
 
