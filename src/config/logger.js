@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const logDir = process.env.LOG_PATH || path.join(__dirname, '../../logs');
 const enableLocalLogs = process.env.ENABLE_LOCAL_LOGS === 'true';
+const enableLogglyLogs = process.env.ENABLE_LOGGLY_LOGS === 'true';
 
 if (enableLocalLogs && !fs.existsSync(logDir)) {
   fs.mkdirSync(logDir, { recursive: true });
@@ -22,7 +23,7 @@ transports.push(
   })
 );
 
-if (process.env.LOGGLY_TOKEN && process.env.LOGGLY_SUBDOMAIN) {
+if (enableLogglyLogs && process.env.LOGGLY_TOKEN && process.env.LOGGLY_SUBDOMAIN) {
   const { Loggly } = require('winston-loggly-bulk');
   transports.push(
     new Loggly({
