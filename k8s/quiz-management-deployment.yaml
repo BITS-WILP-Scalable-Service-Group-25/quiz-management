@@ -16,7 +16,8 @@ spec:
         - name: quiz-management
           image: quiz-management:v1.0.0
           ports:
-            - containerPort: 5001
+            - containerPort: 5001 #REST API
+            - containerPort: 50051 # gRPC API
           env:
             - name: PORT
               value: "5001"

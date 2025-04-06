@@ -41,6 +41,16 @@ const logger = winston.createLogger({
   transports,
 });
 
-logger.info(`Logger initialized. Local Logs { enabled: ${enableLocalLogs}}`);
+if (enableLocalLogs) {
+  logger.info("✅ Local Logs enabled.");
+} else {
+  logger.info("❌ Local Logs disabled.");
+}
+
+if (enableLogglyLogs) {
+  logger.info("✅ Cloud Loggly Logs  enabled.");
+} else {
+  logger.info("❌ Cloud Loggly Logs disabled.");
+}
 
 module.exports = logger;
