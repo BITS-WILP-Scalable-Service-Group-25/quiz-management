@@ -36,6 +36,6 @@ log "Deploying to Minikube Kubernetes..."
 kubectl apply -f k8s/ 2>&1 | tee -a "$LOG_FILE"
 
 log "Waiting for deployment to complete..."
-kubectl rollout status deployment/$SERVICE_NAME 2>&1 | tee -a "$LOG_FILE"
+kubectl rollout status deployment/quiz-management-deployment 2>&1 | tee -a "$LOG_FILE"
 
 log "=== Deployment completed for $SERVICE_NAME ==="
