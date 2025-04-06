@@ -17,6 +17,7 @@ COPY . .
 ENV PORT=5001
 ENV LOG_PATH=/quiz-management/logs
 EXPOSE 5001
+EXPOSE 50051
 
 LABEL maintainer="Salam Plinth <2023tm93762@wilp.bits-pilani.ac.in>"
 LABEL org.opencontainers.image.authors="Salam Plinth <2023tm93762@wilp.bits-pilani.ac.in>"
