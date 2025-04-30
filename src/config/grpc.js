@@ -151,7 +151,7 @@ const startGrpcServer = () => {
   const server = new grpc.Server();
   server.addService(quizProto.service, quizService);
   server.addService(questionProto.service, questionService);
-  server.bindAsync("0.0.0.0:50051", grpc.ServerCredentials.createInsecure(), () => {
+  server.bindAsync("0.0.0.0:50052", grpc.ServerCredentials.createInsecure(), () => {
     logger.info("✅ gRPC Server running on port 50051");
   });
 };
