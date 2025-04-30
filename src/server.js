@@ -5,7 +5,7 @@ const quizRoutes = require("./routes/quizRoutes");
 const startGrpcServer = require("./config/grpc");
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5002;
 
 connectDB();
 startGrpcServer();
