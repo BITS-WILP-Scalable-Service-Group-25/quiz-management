@@ -33,6 +33,10 @@ docker rmi -f $IMAGE_NAME 2>/dev/null || true
 log "Building Docker image..."
 docker build --no-cache -t $IMAGE_NAME . 2>&1 | tee -a "$LOG_FILE"
 
+log "Deleting existing deployment and services..."
+kubectl delete deployment quiz-management-deployment 2>/dev/null || true
+kubectl delete service quiz-management-service 2>/dev/null || true
+
 log "Deploying to Minikube Kubernetes..."
 kubectl apply -f k8s/ 2>&1 | tee -a "$LOG_FILE"
 
