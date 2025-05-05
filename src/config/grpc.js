@@ -45,6 +45,7 @@ const quizService = {
         id: quiz._id, 
         title: quiz.title, 
         description: quiz.description, 
+        createdBy: quiz.createdBy,
         questions: formattedQuestions
       });
     } catch (error) {
@@ -55,7 +56,7 @@ const quizService = {
   ListQuizzes: async (_, callback) => {
     try {
       const quizzes = await Quiz.find();
-      callback(null, { quizzes: quizzes.map(q => ({ id: q._id, title: q.title, description: q.description })) });
+      callback(null, { quizzes: quizzes.map(q => ({ id: q._id, title: q.title, description: q.description, createdBy: q.createdBy })) });
     } catch (error) {
       callback(error);
     }
@@ -152,7 +153,7 @@ const startGrpcServer = () => {
   server.addService(quizProto.service, quizService);
   server.addService(questionProto.service, questionService);
   server.bindAsync("0.0.0.0:50052", grpc.ServerCredentials.createInsecure(), () => {
-    logger.info("✅ gRPC Server running on port 50051");
+    logger.info("✅ gRPC Server running on port 50052");
   });
 };
 
